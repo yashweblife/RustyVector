@@ -1,5 +1,8 @@
 use std::ops::{Add, Sub, Mul, Div};
 use std::fmt;
+use std::fs::File;
+#[warn(non_snake_case)]
+// use termcolor::{Color, ColorChoice, ColorSpec, StandartStream, WriteColor};
 struct Vector{
     x:f64,
     y:f64
@@ -40,12 +43,9 @@ impl Div<Vector> for Vector{
         Vector::new(self.x/other.x, self.y/other.y)
     }
 }
-fn mag(v:Vector)->f64{
+fn mag(v: &Vector) -> f64{
     (v.x*v.x + v.y*v.y).sqrt()
 }
 fn main(){
-    let v1 = Vector::new(10.0,10.0);
-    let v2 = Vector::new(10.0,10.0);
-    let sum = v1 + v2;
-    println!("{}", mag(v1));
+    let mut file = File::create("output.txt").expect("File Wasnt Created");
 }
